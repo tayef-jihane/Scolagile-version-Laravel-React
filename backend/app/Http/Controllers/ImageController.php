@@ -23,7 +23,7 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        // ✅ Vérifier si la requête contient un fichier
+        // Vérifier si la requête contient un fichier
         if (!$request->hasFile('image')) {
             return response()->json([
                 'success' => false,
@@ -33,7 +33,7 @@ class ImageController extends Controller
 
         $file = $request->file('image');
 
-        // ✅ Vérifier si le fichier est valide
+        // Vérifier si le fichier est valide
         if (!$file->isValid()) {
             return response()->json([
                 'success' => false,
@@ -41,7 +41,7 @@ class ImageController extends Controller
             ], 400);
         }
 
-        // ✅ Validation
+        // Validation
         $validator = Validator::make($request->all(), [
             'image' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:5120', // 5MB max
         ]);
@@ -54,7 +54,7 @@ class ImageController extends Controller
         }
 
         try {
-            // ✅ Lire le contenu binaire du fichier
+            // Lire le contenu binaire du fichier
             $binaryData = file_get_contents($file->getRealPath());
 
             if ($binaryData === false) {
@@ -65,7 +65,7 @@ class ImageController extends Controller
                 ], 500);
             }
 
-            // ✅ Créer l'entrée dans la base de données
+            // Créer l'entrée dans la base de données
             $image = Image::create([
                 'name'    => $file->getClientOriginalName(),
                 'type'    => $file->getClientMimeType(),

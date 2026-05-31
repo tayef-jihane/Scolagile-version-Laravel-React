@@ -161,7 +161,7 @@ export default function ImagesPage() {
               <img src={preview} alt="preview" style={{ maxHeight: 200, maxWidth: '100%', objectFit: 'contain' }} />
             ) : (
               <>
-                <div style={{ fontSize: '2rem', color: 'var(--red)' }}>📁</div>
+                <div style={{ fontSize: '2rem', color: 'var(--red)' }}></div>
                 <p>Cliquez pour choisir une image (JPG, PNG, GIF — max 5MB)</p>
               </>
             )}

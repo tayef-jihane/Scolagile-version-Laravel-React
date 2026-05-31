@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('name', 255);
             $table->string('type', 255);
             $table->integer('size');
-            $table->binary('bin_img')->nullable(); // ✅ LONGBLOB équivalent en Laravel
+            $table->binary('bin_img')->nullable(); // LONGBLOB équivalent en Laravel
         });
     }
 

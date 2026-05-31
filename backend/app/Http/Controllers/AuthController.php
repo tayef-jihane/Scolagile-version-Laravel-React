@@ -79,38 +79,23 @@ class AuthController extends Controller
      * Login
      */
     public function login(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
+    { $validator = Validator::make($request->all(), [
             'login' => 'required|string',
             'pass'  => 'required|string',
         ]);
-
         if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'errors'  => $validator->errors()
-            ], 422);
+            return response()->json(['success' => false,'errors'  => $validator->errors()], 422);
         }
-
         $user = User::where('login', $request->login)->first();
-
         if (!$user || !Hash::check($request->pass, $user->pass)) {
             return response()->json([
                 'success' => false,
-                'error'   => 'Login ou mot de passe incorrect'
-            ], 401);
+                'error'   => 'Login ou mot de passe incorrect'], 401);
         }
-
-        try {
+         try {
             $token = JWTAuth::fromUser($user);
-        } catch (JWTException $e) {
-            return response()->json([
-                'success' => false,
-                'error'   => 'Impossible de créer le token'
-            ], 500);
-        }
-
-        return response()->json([
+        } catch (JWTException $e) {return response()->json(['success' => false,'error'   => 'Impossible de créer le token'], 500);
+        }return response()->json([
             'success' => true,
             'token'   => $token,
             'user'    => [
@@ -122,9 +107,7 @@ class AuthController extends Controller
                 'moyenne'   => $user->moyenne,
                 'longitude' => $user->longitude,
                 'latitude'  => $user->latitude,
-            ]
-        ]);
-    }
+            ]]);}
 
     /**
      * Logout

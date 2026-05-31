@@ -6,7 +6,7 @@ export default function AuthPage() {
   const [isRegister, setIsRegister] = useState(false);
   const [error, setError] = useState('');
 
-  // ✅ Suppression de note1 et note2 du formulaire
+  // Suppression de note1 et note2 du formulaire
   const [form, setForm] = useState({
     login: '',
     pass: '',
@@ -26,7 +26,7 @@ export default function AuthPage() {
     const doLogin = async () => {
       let result;
       if (isRegister) {
-        // ✅ Envoi uniquement de login, pass et nom
+        // Envoi uniquement de login, pass et nom
         result = await register({
           login: form.login,
           pass: form.pass,

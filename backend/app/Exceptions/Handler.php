@@ -25,14 +25,14 @@ class Handler extends ExceptionHandler
     {
         $response = parent::render($request, $exception);
 
-        // ✅ Forcer l'encodage UTF-8 pour les réponses JSON
+        // Forcer l'encodage UTF-8 pour les réponses JSON
         if ($response instanceof JsonResponse) {
             $response->setEncodingOptions(
                 JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT
             );
         }
 
-        // ✅ Forcer le Content-Type avec charset=UTF-8
+        // Forcer le Content-Type avec charset=UTF-8
         if ($response instanceof Response) {
             $response->headers->set('Content-Type', 'application/json; charset=UTF-8');
         }

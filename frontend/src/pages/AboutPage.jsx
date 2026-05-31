@@ -25,13 +25,13 @@ export default function AboutPage() {
             <div className="cv-role">Étudiant Master RSI — Langage du Web</div>
             <div className="cv-contact-items">
               <div className="cv-contact-item">
-                <span>✉</span> {user?.login}@ump.ac.ma
+                <span></span> {user?.login}@uhp.ac.ma
               </div>
               <div className="cv-contact-item">
-                <span>🎓</span> Université Hassan 1er — FST Settat
+                <span></span> Université Hassan 1er — FST Settat
               </div>
               <div className="cv-contact-item">
-                <span>📅</span> Année 2025-2026
+                <span></span> Année 2025-2026
               </div>
             </div>
           </div>
